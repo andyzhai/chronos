@@ -20,13 +20,13 @@ From the root directory execute:
 
 	mvn clean install
 
-A package named "chronos-X.X.X-SNAPSHOT-vertx.module.zip" should now be available. 
+A package named **chronos-X.X.X-SNAPSHOT-vertx.module.zip** should now be available. 
 Note that a tar.gz and tar.bz2 package are also available for convenience.
 
 
 ## Install and execute as a Vert.X module
 
-Unpack the generated "chronos-X.X.X-SNAPSHOT-vertx.module.zip" file into VERTX_HOME/mods directory.
+Unpack the generated **chronos-X.X.X-SNAPSHOT-vertx.module.zip** file into VERTX_HOME/mods directory.
 
 The web application can then be initialized with vertx:
 
