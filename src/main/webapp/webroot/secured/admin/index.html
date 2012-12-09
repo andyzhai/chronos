@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>CHRONOS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Scientific Approach to Software Development">
+		<meta name="author" content="">
+
+		<!-- Styles -->
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+		</style>
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/css/datepicker.css" rel="stylesheet">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Fav and touch icons -->
+		<link rel="shortcut icon" href="assets/ico/favicon.ico">
+	    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+	    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+	    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+	    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+
+	</head>
+
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+		          	<a class="brand" href="http://twitter.github.com/bootstrap/examples/hero.html#">
+		          		<img src="/assets/ico/apple-touch-icon-128-precomposed.png" width="20px" title="CHRONOS" style="position:relative; top: -2px;" /> 
+	    	      		CHRONOS</a>
+					<div id="sessionControl" class="nav-collapse collapse">
+						<ul class="nav">
+							<li>
+								<a data-bind="attr : { href: '/index.html?sessionID=' + sessionID() + '&username=' + username() }">Timeline</a>
+							</li>
+							<li class="active">
+								<a data-bind="attr : { href: '/admin/index.html?sessionID=' + sessionID() + '&username=' + username() }">Editor</a>
+							</li>
+							<li>
+								<a data-bind="attr : { href: '/admin/options.html?sessionID=' + sessionID() + '&username=' + username() }">Options</a>
+							</li>
+						</ul>
+						<div class="pull-right">
+							<button data-bind="click: logout" class="btn pull-right">
+								<span data-bind="text: username"></span> logout
+							</button>
+						</div>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span2">
+						<!--Sidebar content-->
+						<div id="control-panel" data-spy="affix" class="btn-block" style="width: 160px;">
+							<p>
+							  <button class="btn btn-large btn-block btn-success" type="button" data-bind="click: save">
+							  	<i class="icon-file icon-white align-left"></i> Save Timeline
+							  </button>
+							</p>
+							<p>
+							  <button class="btn btn-large btn-block btn-primary" type="button" data-bind="click: addDate">
+							   	<i class="icon-plus-sign icon-white"></i> Add Event
+							  </button>
+							</p>
+						</div>
+					</div>
+					<div id="timeline" class="span10">
+						
+						<!-- Modal -->
+						<div id="confirmRemoval" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelRemoval">×</button>
+								<h3 id="myModalLabel">Remove Timeline entry?</h3>
+							</div>
+							<div class="modal-footer">
+								<button class="btn" data-dismiss="modal" aria-hidden="true" data-bind="click: cancelRemoval">Cancel</button>
+								<button class="btn btn-danger" data-bind="click: confirmRemoval">Remove</button>
+							</div>
+						</div>
+						
+						<!--Body content-->
+						<!-- Main hero unit for a primary marketing message or call to action -->
+						<div class="hero-unit">
+							<h1>Timeline</h1>
+							<hr>
+							<form class="form-horizontal">
+								<div class="control-group">
+									<label class="control-label" for="timeline-headline">Headline</label>
+									<div class="controls">
+										<input type="text" id="timeline-headline" class="input-xxlarge" data-bind="value: headline" placeholder="Headline">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="timeline-text">Text</label>
+									<div class="controls">
+										<textarea id="timeline-text" class="input-xxlarge" data-bind="value: text" rows="5" placeholder="Timeline description text"></textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="timeline-startDate">Start Date</label>
+									<div class="controls">
+										<input type="text" id="timeline-startDate" data-bind="value: startDate">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="timeline-asset-media">Media</label>
+									<div class="controls">
+										<input type="text" id="timeline-asset-media" class="input-xxlarge" data-bind="value: asset.media" placeholder="Media URL here">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="timeline-asset-credit">Credits</label>
+									<div class="controls">
+										<input type="text" id="timeline-asset-credit" class="input-xxlarge" data-bind="value: asset.credit" placeholder="Credits to">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="timeline-asset-caption">Caption</label>
+									<div class="controls">
+										<input type="text" id="timeline-asset-caption" class="input-xxlarge" data-bind="value: asset.caption" placeholder="Media Caption">
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<hr>
+
+						<div data-bind="foreach: date, visible: date().length > 0">
+							<div data-bind="attr: { id: 'date-entry-' + $index() }" class="hero-unit">
+								<div class="modal-header">
+				                	<button type="button" class="close" data-toggle="modal" data-target="#confirmRemoval" aria-hidden="true" data-bind="click: markForRemoval">×</button>
+									<h3>Event Entry</h3>
+				              	</div>
+								<hr>
+								<form class="form-horizontal">
+									<div class="control-group">
+										<label class="control-label" for="date-startDate">Entry Start Date</label>
+										<div class="controls">
+											<input type="text" id="date-startDate" data-bind="value: startDate">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-headline">Headline</label>
+										<div class="controls">
+											<input type="text" id="date-headline" class="input-xxlarge" data-bind="value: headline" placeholder="Entry Headline">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-text">Text</label>
+										<div class="controls">
+											<textarea id="date-text" class="input-xxlarge" data-bind="value: text" rows="5" placeholder="Entry description text"></textarea>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-amount">Counter Amount</label>
+										<div class="controls">
+											<input type="number" id="date-amount" class="input-xxlarge" data-bind="value: amount" placeholder="Entry counter amount">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-asset-media">Media</label>
+										<div class="controls">
+											<input type="text" id="date-asset-media" class="input-xxlarge" data-bind="value: asset.media" placeholder="Media URL here">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-asset-credit">Credits</label>
+										<div class="controls">
+											<input type="text" id="date-asset-credit" class="input-xxlarge" data-bind="value: asset.credit" placeholder="Credits to">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="date-asset-caption">Caption</label>
+										<div class="controls">
+											<input type="text" id="date-asset-caption" class="input-xxlarge" data-bind="value: asset.caption" placeholder="Media Caption">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<p class="pull-right">
+					Powered By © CHRONOS
+				</p>
+			</footer>
+
+		</div>
+
+		<!-- The javascript -->
+		<script src="/js/libs/jquery-1.7.1.min.js"></script>
+		<script src="/js/libs/sockjs-0.2.1.min.js"></script>
+		<script src="/js/libs/bootstrap.min.js"></script>
+		<script src="/js/libs/bootstrap-datepicker.js"></script>
+		<script src="/js/libs/knockout-2.1.0.js"></script>
+		<script src="/js/libs/vertxbus.js"></script>
+		<script src="/js/chronos-common.js"></script>
+		<script src="/js/chronos-logout.js"></script>
+		<script src="/js/chronos-admin.js"></script>
+
+	</body>
+</html>

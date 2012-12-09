@@ -1,0 +1,34 @@
+{ 
+	"inbound_permitted" : [
+    {
+      "address" : "vertx.mongopersistor",
+      "match" : {
+      	"action" : "find",
+        "collection" : "timeline"
+      }
+    },
+    {
+      "address" : "vertx.mongopersistor",
+      "requires_auth" : true,
+      "match" : {
+        "action" : "save",
+        "collection" : "timeline"
+      }
+    },
+	{
+      "address" : "vertx.mongopersistor",
+      "match" : {
+      	"action" : "find",
+        "collection" : "timeline.options"
+      }
+    },
+    {
+      "address" : "vertx.mongopersistor",
+      "requires_auth" : true,
+      "match" : {
+        "action" : "save",
+        "collection" : "timeline.options"
+      }
+    }],
+	"outbound_permitted" : [{}]
+}

@@ -1,0 +1,4 @@
+{
+  "main": "org.riaconnection.chronos.server.ChronosServer",
+  "preserve-cwd": false
+}

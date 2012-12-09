@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>CHRONOS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scientific Approach to Software Development">
+    <meta name="author" content="">
+    
+    <!-- Styles -->
+    <link href="css/counter.css" rel="stylesheet" type="text/css"/>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css">
+    <!-- Style-->
+    <style>
+      html, body {
+       height:100%;
+       padding: 0px;
+       margin: 0px;
+      }
+    </style>
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/ico/apple-touch-icon-128-precomposed.png">
+	
+</head>
+
+<body>
+	
+	<!-- Modal -->
+	<div id="loginErrorModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Login Error</h3>
+		</div>
+		<div class="modal-footer">
+			<h4>Invalid Login!</h4>
+			<hr />
+			<button class="btn btn-danger" onclick="$('#loginErrorModal').modal('hide');">Got it!</button>
+		</div>
+	</div>
+	
+	
+    <div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+	    	<div class="container">
+	        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	          	</a>
+	          	<a class="brand" href="http://twitter.github.com/bootstrap/examples/hero.html#">
+	          		<img src="/assets/ico/apple-touch-icon-128-precomposed.png" width="20px" title="CHRONOS" style="position:relative; top: -2px;" /> 
+	          		CHRONOS</a>
+	          	<div class="nav-collapse collapse">
+	            	<div id="navigator" class="hide">
+		            	<ul class="nav">
+							<li class="active">
+								<a data-bind="attr : { href: '/index.html?sessionID=' + sessionID() + '&username=' + username() }">Timeline</a>
+							</li>
+							<li>
+								<a data-bind="attr : { href: '/admin/index.html?sessionID=' + sessionID() + '&username=' + username() }">Editor</a>
+							</li>
+							<li>
+								<a data-bind="attr : { href: '/admin/options.html?sessionID=' + sessionID() + '&username=' + username() }">Options</a>
+							</li>
+		            	</ul>
+		        	</div>
+	            	<form id="loginForm" class="navbar-form pull-right">
+	              		<input id="username" class="span2" type="text" placeholder="Username" data-bind="value: username">
+	              		<input id="password" class="span2" type="password" placeholder="Password" data-bind="value: password">
+	              		<input type="submit" class="btn primary" data-bind="click: login" value="Login" />
+	            	</form>
+					<div id="sessionControl" class="pull-right hide">
+						<button data-bind="click: logout" class="btn pull-right">
+							<span data-bind="text: username"></span> logout
+						</button>
+					</div>
+          		</div><!-- nav-collapse -->
+        	</div>
+      	</div>
+	    <!-- Flip Counter -->
+		<div id="counter" style="position:absolute; right:0px; top:50px; display:none;">
+		</div>
+    </div>
+
+   	<!-- BEGIN Timeline Embed -->
+	<div id="timeline-embed"></div>
+
+	<!-- The javascript -->
+	<script src="js/libs/jquery-1.7.1.min.js"></script>
+	<script src="js/libs/sockjs-0.2.1.min.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/knockout-2.1.0.js"></script>
+	<script src="js/libs/jshashtable.js" type="text/javascript"></script>
+	<script src="js/libs/jquery.numberformatter-1.2.2.min.js" type="text/javascript"></script>
+	<script src="js/libs/jquery.easing.1.3.js" type="text/javascript"></script>
+	<script src="js/libs/jquery.flipCounter.1.2.pack.js" type="text/javascript"></script>
+	<script src="js/libs/vertxbus.js"></script>
+	<script src="js/storyjs-embed.js"></script>
+	<script src="js/chronos-common.js"></script>
+	<script src="js/chronos-timeline.js"></script>
+    
+</body>
+</html>

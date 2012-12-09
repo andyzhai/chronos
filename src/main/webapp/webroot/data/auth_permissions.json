@@ -1,0 +1,11 @@
+{ 
+	"inbound_permitted" : [
+	{
+    	"address" : "vertx.basicauthmanager.login"
+    },{
+    	"address" : "vertx.basicauthmanager.authorise"
+    },{
+    	"address" : "vertx.mongopersistor"
+    }],
+	"outbound_permitted" : [{}]	
+}
