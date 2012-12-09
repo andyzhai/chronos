@@ -2,11 +2,14 @@
 
 CHRONOS is a simple to use and deploy web based application to easily manage your subject timeline.
 
+
 ## Requirements
 
 * Vert.X IO 1.3.0 or above
 * Maven 3 or above
 * JDK 6 or 7 (Maven POM configured for 7 by default)
+* MongoDB 2.0 or above
+
 
 ## Build from source
 
@@ -15,7 +18,7 @@ If zip file was used, unpack the contents into a directory of your choice.
 
 From the root directory execute:
 
-<mvn clean install>
+	mvn clean install
 
 A package named "chronos-X.X.X-SNAPSHOT-vertx.module.zip" should now be available. 
 Note that a tar.gz and tar.bz2 package are also available for convenience.
@@ -27,19 +30,24 @@ Unpack the generated "chronos-X.X.X-SNAPSHOT-vertx.module.zip" file into VERTX_H
 
 The web application can then be initialized with vertx:
 
-<vertx runmod chronos-X.X.X-SNAPSHOT>
+	vertx runmod chronos-X.X.X-SNAPSHOT
+
 
 ## Run from Maven
 
 You can also start the server from Maven by executing:
 
-<mvn vertx:run>
+	mvn vertx:run -Dchronos.webroot.dir=./target/classes/webroot
 
 For such case, no installation in Vert.X module directory is required.
+
 
 ## Run from Eclipse
 
 If you decide to import the Maven project in Eclipse, then you can always use the provided Eclipse launcher file :
 
-<chronos.launch>
+	chronos.launch
+
+
+
 
