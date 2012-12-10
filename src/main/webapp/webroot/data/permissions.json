@@ -1,4 +1,8 @@
-{ 
+{
+	"address": "vertx.mongopersistor",
+    "host": "localhost",
+    "port": 27017,
+    "db_name": "default_db", 
 	"inbound_permitted" : [
     {
       "address" : "vertx.mongopersistor",
