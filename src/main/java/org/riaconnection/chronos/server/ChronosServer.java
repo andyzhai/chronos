@@ -116,7 +116,7 @@ public class ChronosServer extends Verticle {
         String data = null;
 
         try {
-            buffer = vertx.fileSystem().readFileSync(this.cwd + "/data/" + filename);
+            buffer = vertx.fileSystem().readFileSync(this.cwd + "/../data/" + filename);
             data = buffer.getString(0, buffer.length());
         } catch (Exception e) {
             logger.error(e.getMessage());

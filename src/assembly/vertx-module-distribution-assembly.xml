@@ -26,13 +26,6 @@
 			</includes>
 		</fileSet>
 		<fileSet>
-			<directory>${basedir}/webroot</directory>
-			<outputDirectory>/webroot</outputDirectory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-		<fileSet>
 			<directory>${project.build.directory}/site</directory>
 			<outputDirectory>docs</outputDirectory>
 		</fileSet>
