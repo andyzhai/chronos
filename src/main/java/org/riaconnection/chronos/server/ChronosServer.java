@@ -98,7 +98,13 @@ public class ChronosServer extends Verticle {
         // Register for app notifications
         eb.registerHandler(APP_NOTIFY_ADDRESS, new ChronosNotificationHandler(container));
 
-        server.listen(8080);
+        JsonObject cliConf = container.getConfig();
+        String ip = cliConf.getString("ip");
+        Integer port = cliConf.getInteger("port");
+
+        if (ip == null || ip.isEmpty()) ip = "localhost";
+
+        server.listen(port == null ? 8080 : port.intValue(), ip);
     }
 
     private String loadStaticData(String filename) {

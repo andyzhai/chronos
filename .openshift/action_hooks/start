@@ -1,7 +1,7 @@
 #!/bin/bash
 # The logic to start up your application should be put in this
 # script. The application will work only if it binds to
-# $OPENSHIFT_INTERNAL_IP:8080
+# $OPENSHIFT_INTERNAL_IP:8080 
 # nohup $OPENSHIFT_REPO_DIR/diy/testrubyserver.rb $OPENSHIFT_INTERNAL_IP $OPENSHIFT_REPO_DIR/diy > $OPENSHIFT_HOMEDIR/diy-0.1/logs/server.log 2>&1 &
 
 PATH="${OPENSHIFT_DATA_DIR}vert.x/bin:$PATH"
@@ -11,5 +11,5 @@ cd $OPENSHIFT_REPO_DIR
  
 echo "{\"ip\":\"${OPENSHIFT_INTERNAL_IP}\",\"port\":\"${OPENSHIFT_INTERNAL_PORT}\"}" > .openshift/vertx.config
  
-nohup bash -c "exec 'vertx' 'runmods' 'chronos-0.0.1-SNAPSHOT' -conf .openshift/vertx.config &> ${OPENSHIFT_DIY_LOG_DIR}vert.x.log" &> /dev/null &
+nohup bash -c "exec 'vertx' 'runmod' 'chronos-0.0.1-SNAPSHOT' -conf .openshift/vertx.config &> ${OPENSHIFT_DIY_LOG_DIR}vert.x.log" &> /dev/null &
 echo $! > .openshift/application.pid
