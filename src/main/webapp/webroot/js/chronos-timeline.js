@@ -72,6 +72,18 @@
 		        	  $("#counter").flipCounter("setNumber", $("#counter").flipCounter("getNumber") - parseInt(self.timelineEvents[self.dateEventIndex].amount));
 	        	  }
 	          });
+	          
+	          $('.flag-content').bind('click', function() {
+	        	  self.dateEventIndex = $.inArray(this, $('.flag-content'));
+	        	  
+	        	  var total = 0;
+	        	  for (var index = 0; index < self.dateEventIndex; index++) {
+	        		  total += parseInt(self.timelineEvents[index].amount);
+	        	  }
+	        	  
+	        	  $("#counter").flipCounter("setNumber", total);
+	          });
+
 	        } else {
 	          setTimeout(arguments.callee, 100);
 	        }
