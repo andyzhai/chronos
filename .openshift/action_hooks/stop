@@ -3,4 +3,10 @@
 #kill `ps -ef | grep testrubyserver.rb | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
 #exit 0
 
-killall java
+running=`ps cax | grep -v grep | grep java | wc -l`
+if [ running -gt 0 ]; then
+    echo "Shutting down Vertx..."
+	killall java
+else
+    echo "Vertx is not running"
+fi
