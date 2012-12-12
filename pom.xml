@@ -263,6 +263,7 @@
 								<phase>install</phase>
 								<configuration>
 									<target name="install-chronos">
+										<delete dir="${env.OPENSHIFT_DATA_DIR}/vert.x/mods/${project.build.finalName}"/>
 										<unzip src="${project.build.directory}/${project.build.finalName}-vertx-module.zip" dest="${env.OPENSHIFT_DATA_DIR}/vert.x/mods"/>
 									</target>
 								</configuration>
