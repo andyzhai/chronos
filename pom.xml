@@ -227,6 +227,7 @@
 										<move todir="${env.OPENSHIFT_DATA_DIR}/vert.x">
 										    <fileset dir="${env.OPENSHIFT_DATA_DIR}/vert.x-${vertx.version}"/>
 										</move>
+										<chmod file="${env.OPENSHIFT_DATA_DIR}/vert.x/bin/vertx" perm="ugo+rx"/>
 									</target>
 								</configuration>
 								<goals>

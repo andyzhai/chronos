@@ -7,9 +7,9 @@
 PATH="${OPENSHIFT_DATA_DIR}vert.x/bin:$PATH"
 VERTX_MODS="${OPENSHIFT_DATA_DIR}vert.x/mods"
  
-cd $OPENSHIFT_DATA_DIRvert.x
+cd ${OPENSHIFT_DATA_DIR}vert.x
  
-echo "{\"ip\":\"${OPENSHIFT_INTERNAL_IP}\",\"port\":\"${OPENSHIFT_INTERNAL_PORT}\"}" > ${OPENSHIFT_REPO_DIR}.openshift/vertx.config
+echo "{\"ip\":\"${OPENSHIFT_INTERNAL_IP}\",\"port\":${OPENSHIFT_INTERNAL_PORT}}" > ${OPENSHIFT_REPO_DIR}.openshift/vertx.config
  
 nohup bash -c "exec 'vertx' 'runmod' 'chronos-0.0.1-SNAPSHOT' -conf ${OPENSHIFT_REPO_DIR}.openshift/vertx.config &> ${OPENSHIFT_DIY_LOG_DIR}vert.x.log" &> /dev/null &
 echo $! > ${OPENSHIFT_REPO_DIR}.openshift/application.pid
