@@ -1,10 +1,10 @@
 {
 	"address": "vertx.mongopersistor",
-    "host": "localhost",
-    "port": 27017,
-    "username": "mongo_admin",
-    "password": "mongo_password",
-    "db_name": "default_db", 
+    "host": "${mongo.host}",
+    "port": ${mongo.port},
+    "username": "${mongo.admin}",
+    "password": "${mongo.password}",
+    "db_name": "${mongo.db}", 
 	"inbound_permitted" : [
     {
       "address" : "vertx.mongopersistor",
