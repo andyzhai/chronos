@@ -60,4 +60,14 @@ public enum MongoModule {
         eb.send(MONGO_PUBLISH_ADDRESS, action, handler);
     }
 
+    public void save(String collection, JsonObject document, Handler<Message<JsonObject>> handler) {
+
+        if (collection == null || collection.isEmpty()) {
+            return;
+        }
+
+        JsonObject action = MongoFactory.generateSaveActionObject(collection, document);
+
+        eb.send(MONGO_PUBLISH_ADDRESS, action, handler);
+    }
 }
