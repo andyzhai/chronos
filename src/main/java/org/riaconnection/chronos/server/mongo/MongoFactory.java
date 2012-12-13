@@ -49,4 +49,14 @@ public enum MongoFactory {
         return action;
     }
 
+    public JsonObject generateSaveActionObject(String collection, JsonObject document) {
+
+        JsonObject action = new JsonObject();
+        action.putString("action", "save");
+        action.putString("collection", collection);
+
+        action.putObject("document", document);
+
+        return action;
+    }
 }

@@ -8,6 +8,7 @@ import java.io.File;
 
 import org.riaconnection.chronos.server.auth.handlers.SecureWebHandler;
 import org.riaconnection.chronos.server.handlers.ChronosNotificationHandler;
+import org.riaconnection.chronos.server.mongo.handlers.InitMongoHandler;
 import org.riaconnection.chronos.server.mongo.handlers.MongoWebHandler;
 import org.vertx.java.core.Handler;
 import org.vertx.java.core.buffer.Buffer;
@@ -86,6 +87,10 @@ public class ChronosServer extends Verticle {
 
         EventBus eb = vertx.eventBus();
 
+        // Register for app notifications
+        eb.registerHandler(APP_NOTIFY_ADDRESS, new ChronosNotificationHandler(container));
+
+        // Init auth module
         AuthManager.init(container, eb, null);
 
         // Load DB configuration
@@ -93,10 +98,7 @@ public class ChronosServer extends Verticle {
         JsonObject config = new JsonObject(configString);
 
         // Start Mongo DB module
-        MongoDB.init(container, eb, APP_NOTIFY_ADDRESS, config, null);
-
-        // Register for app notifications
-        eb.registerHandler(APP_NOTIFY_ADDRESS, new ChronosNotificationHandler(container));
+        MongoDB.init(container, eb, APP_NOTIFY_ADDRESS, config, new InitMongoHandler(eb));
 
         JsonObject cliConf = container.getConfig();
         String ip = cliConf.getString("ip");

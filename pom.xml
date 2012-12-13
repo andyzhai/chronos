@@ -220,11 +220,11 @@
 			<activation>
 				<activeByDefault>false</activeByDefault>
 				<file>
-					<missing>${basedir}/vertxDistro/vert.x-${vertx.version}.zip</missing>
+					<missing>vertxDistro/vert.x-1.3.0.final.zip</missing>
 				</file>
 			</activation>
 			<properties>
-				<vertx.installed>true</vertx.installed>
+				<vertx.installed>false</vertx.installed>
 			</properties>
 			<build>
 				<plugins>
