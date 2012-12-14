@@ -24,11 +24,20 @@
 			<includes>
 				<include>**/*</include>
 			</includes>
+			<excludes>
+        		<exclude>**/webroot/index.html</exclude>
+			</excludes>
 		</fileSet>
 		<fileSet>
 			<directory>${project.build.directory}/site</directory>
 			<outputDirectory>docs</outputDirectory>
 		</fileSet>
 	</fileSets>
-	
+	<files>
+	    <file>
+	    	<source>${project.build.directory}/classes/webroot/index.html</source>
+	    	<outputDirectory>/webroot/</outputDirectory>
+	    	<filtered>true</filtered>
+	    </file>
+	</files>
 </assembly>
