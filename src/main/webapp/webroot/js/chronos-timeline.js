@@ -63,32 +63,35 @@
 	        if ($('.nav-next').exists() && $('.nav-previous').exists()) {
 	          $('.nav-next').on('click', function () {
 	        	  if (self.dateEventIndex < self.timelineEvents.length) {
-	        		  self.updateFlipCounter($("#counter").flipCounter("getNumber") + parseInt(self.timelineEvents[self.dateEventIndex].amount));
-		        	  self.dateEventIndex++;
+	        		  self.dateEventIndex++;
+	        		  self.updateFlipCounter(calculateTotal());
 	        	  }
 	          });
 	          $('.nav-previous').on('click', function () {
 	        	  if (self.dateEventIndex >= 0) {
 	        		  self.dateEventIndex--;
-	        		  self.updateFlipCounter($("#counter").flipCounter("getNumber") - parseInt(self.timelineEvents[self.dateEventIndex].amount));
+	        		  self.updateFlipCounter(calculateTotal());
 	        	  }
 	          });
 	          
 	          $('.flag-content').bind('click', function() {
 	        	  self.dateEventIndex = $.inArray(this, $('.flag-content'));
 	        	  
-	        	  var total = 0;
-	        	  for (var index = 0; index < self.dateEventIndex; index++) {
-	        		  total += parseInt(self.timelineEvents[index].amount);
-	        	  }
-	        	  
-	        	  self.updateFlipCounter(total);	        	  
+	        	  self.updateFlipCounter(calculateTotal());	        	  
 	          });
 
 	        } else {
 	          setTimeout(arguments.callee, 100);
 	        }
 	      },100);
+	}
+	
+	function calculateTotal() {
+		var total = 0;
+		for (var index = 0; index < self.dateEventIndex; index++) {
+			total += parseInt(self.timelineEvents[index].amount);
+		}
+		return total;
 	}
 	
 	function stepFlipCounter(toValue) {
