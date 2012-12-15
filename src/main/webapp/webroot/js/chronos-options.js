@@ -6,8 +6,12 @@
 		if (options) {
 			self._id = options._id;
 			self.useCounter = ko.observable(options.useCounter);
+			self.animateCounter = ko.observable(options.animateCounter);
+			self.animationDelay = ko.observable(options.animationDelay);
 		} else {
 			self.useCounter = ko.observable(false);
+			self.animateCounter = ko.observable(true);
+			self.animationDelay = ko.observable(1000);
 		}
 		
 		self.updateOptions = function () {

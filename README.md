@@ -1,8 +1,8 @@
 # CHRONOS - Timeline made easy
 
-CHRONOS is a simple to use and deploy web based application to easily manage your subject timeline.
+CHRONOS is a simple to use and deploy web based application used to easily manage any given subject timeline.
 
-Chech demo on [Openshift](http://chronos-cfp.rhcloud.com)
+Check the demo at [Openshift](http://chronos-cfp.rhcloud.com)
 
 ## Requirements
 
@@ -99,5 +99,13 @@ If you decide to import the Maven project in Eclipse, then you can always use th
 	chronos.launch
 
 
+# Used Technologies
 
+[vert.x](http://vertx.io/)
+[Knockout JS](http://knockoutjs.com/)
+[Twitter Bootstrap](http://twitter.github.com/bootstrap)
+[Timeline JS](http://timeline.verite.co/)
+[flipCounter](http://bloggingsquared.com/jquery/flipcounter/)
+[Openshift](https://openshift.redhat.com) 
 
+And the usual [jQuery](http://jquery.com/), [Maven](http://maven.apache.org/index.html) and several of their related plugins.

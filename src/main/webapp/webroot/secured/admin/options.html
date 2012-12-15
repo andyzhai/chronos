@@ -89,10 +89,16 @@
 				<h3>Counter Options</h3>
 				
 				<div id="options">
-					<form>					
+					<form class="form-inline" data-bind="submit: function() {return false;}">					
 						<label class="checkbox">
 					   		<input id="useCounter" type="checkbox" data-bind="checked: useCounter, click: updateOptions" > Use counter
 					    </label>
+						<label class="checkbox" style="margin-left: 50px;">
+					   		<input id="animateCounter" type="checkbox" data-bind="checked: animateCounter, click: updateOptions" > Animate counter
+					    </label>
+						<label class="control-label" for="animationDelay" style="margin-left: 50px;">Animation delay
+				   			<input id="animationDelay" type="number" class="input-mini" data-bind="value: animationDelay, event: {change: updateOptions}" >
+				   		</label>
 					</form>
 				</div>
 				
