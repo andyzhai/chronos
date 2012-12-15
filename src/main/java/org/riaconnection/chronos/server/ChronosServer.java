@@ -5,6 +5,8 @@ import static org.riaconnection.chronos.server.auth.AuthManagerModule.AuthManage
 import static org.riaconnection.chronos.server.mongo.MongoModule.MongoDB;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.riaconnection.chronos.server.auth.handlers.SecureWebHandler;
 import org.riaconnection.chronos.server.handlers.ChronosNotificationHandler;
@@ -66,8 +68,24 @@ public class ChronosServer extends Verticle {
                         return;
                     }
                 }
+
+                cacheImages(req, file.toLowerCase());
+
                 req.response.sendFile(file);
                 logger.info("Request path: " + file);
+            }
+
+            private void cacheImages(HttpServerRequest req, String file) {
+                if (file.endsWith(".png") || file.endsWith(".gif") || file.endsWith(".jpg") || file.endsWith(".jpeg")) {
+                    // Avoid multiple hits for image files
+                    req.response.putHeader("Cache-Control", "max-age=86400,must-revalidate");
+                    SimpleDateFormat formatter = new SimpleDateFormat("EEE, dd MMM YYYY HH:mm:ss zzz");
+                    Calendar cal = Calendar.getInstance();
+                    cal.add(Calendar.MONTH, 1);
+                    req.response.putHeader("Expires", formatter.format(cal.getTime()));
+                    File f = new File(file);
+                    req.response.putHeader("Last-Modified", formatter.format(f.lastModified()));
+                }
             }
 
         });
