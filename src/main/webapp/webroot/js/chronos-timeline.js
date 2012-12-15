@@ -148,7 +148,7 @@
 					});
 					
 					if (self.options.animateCounter === false) {
-						self.updateFieldCounter = stepFlipCounter;
+						self.updateFlipCounter = stepFlipCounter;
 					}
 					$('#counterBox').show();					
 				} else {
