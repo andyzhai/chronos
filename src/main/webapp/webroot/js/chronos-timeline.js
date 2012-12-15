@@ -138,7 +138,7 @@
 				        digitHeight:40, // the height of each digit in the flipCounter-medium.png sprite image
 				        digitWidth:30, // the width of each digit in the flipCounter-medium.png sprite image
 				        imagePath:"img/flipCounter-medium.png", // the path to the sprite image relative to your html document
-				        easing: jQuery.easing.easeInOutCubic, // the easing function to apply to animations, you can override this with a jQuery.easing method
+				        easing: jQuery.easing.jswing, // the easing function to apply to animations, you can override this with a jQuery.easing method
 				        duration: self.options.animationDelay, // duration of animations
 				        onAnimationStarted:false, // call back for animation upon starting
 				        onAnimationStopped:false, // call back for animation upon stopping

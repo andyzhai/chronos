@@ -61,7 +61,7 @@ The database has your app name and the user is stored under the users table. Cha
 
 ## 2: Build from source and run locally (Good for developers)
 
-### Downoad and build
+### Download and build
 
 Download the distribution code from github in either a zip file or by means of a git clone. 
 If zip file was used, unpack the contents into a directory of your choice.
