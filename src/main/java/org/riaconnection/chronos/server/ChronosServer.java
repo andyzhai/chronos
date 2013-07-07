@@ -161,7 +161,9 @@ public class ChronosServer extends Verticle {
                     this.cwd = "webroot";
                 }
             }
-
+            if(cwd.contains(":")){
+            	this.cwd = cwd.substring(3);
+            }
             File f = new File(this.cwd);
             if (f.exists() && f.isDirectory()) {
                 logger.info("Chronos Web Base set to: " + f.getAbsolutePath());
