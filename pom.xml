@@ -258,8 +258,8 @@
 					                <goal>download-single</goal>
 					            </goals>
 					            <configuration>
-					                <url>http://vertx.io/</url>
-					                <fromFile>downloads/vert.x-${vertx.version}.zip</fromFile>
+					                <url>http://vert-x.github.io/</url>
+					                <fromFile>vertx-downloads/downloads/vert.x-${vertx.version}.zip</fromFile>
 					                <toDir>${basedir}/vertxDistro/</toDir>
 					            </configuration>
 					        </execution>
